@@ -1,0 +1,49 @@
+<h1>vbscript调用</h1><br>
+使用windows自带语音功能朗读单词，纯属无聊+无奈...<br>
+
+搜索到可以使用vbscript:createobject("sapi.spvoice").speak("你想说什么?")来实现发声.<br>
+	好奇了解了一下bat中处理vbscript的方式.<br>
+	参考文章:<a href = "http://www.bathome.net/thread-11516-1-1.html">http://www.bathome.net/thread-11516-1-1.html#</a><br>
+
+	其中的两种写法分别为：<br>
+	+----------------------------------------------------------------------------------------------------------------------------------+<br>
+	 标准html用法<br>
+
+	<h5>mshta vbscript:"<html style=background:buttonface><title>作者:myzam 2011-3-18</title><body>hello world<br/>hello<hr/>world<script language=vbscript>msgbox (123)</script></body></html>"</h5><br>
+	
+	+----------------------------------------------------------------------------------------------------------------------------------+<br>
+	调用脚本写法：<br>
+	
+	mshta vbscript:"<script language=vbs>set myzam=createobject(""sapi.spvoice""):myzam.speak ""hello world""</script>"<br>
+	
+	+----------------------------------------------------------------------------------------------------------------------------------+<br>
+	使用环境变量代换：<br>
+	
+	 
+	@echo off
+	set t="<script language=vbs>msgbox 123:self.close</script>"
+	mshta vbscript:%t%
+
+	+----------------------------------------------------------------------------------------------------------------------------------+<br>
+	
+	
+	考虑到读取单词需要，应该使用for循环，= =!! 全都不懂，查资料吧...<br>
+	
+	整合一下:<br>
+	
+	@echo off 
+
+	for /f "tokens=1-2 delims= " %%i in (English_words.txt) do mshta vbscript:createobject("sapi.spvoice").speak("%%i %%j")(window.close)
+
+	pause
+
+简单一句话，基本能用，= =!! 
+
+	<br>
+	
+	for /f 会以行为单位读取文件中的内容，空白行跳过，空格也会跳过，所以需要使用tokens和delims来指定，脚本中tokens使用了正则表达式 "1-2"代表读取1到2列，列之间以空格分开，而有多少列其后的就应该有多少个参数，%%i %%j,i和j都是按照字母排序来的，(别问为什么，人家就是这么规定的 = =!!)<br><br>
+	
+	保存为cmd.bat，回车，英文中文能正常发声，日文哑巴了，估计设置问题了，后续需要再调整吧.<br>
+	
+	: )
+	

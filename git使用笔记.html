@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>git使用笔记</title>
+ </head>
+ <body>
+		<h2>git使用笔记</h2>
+		<p/>
+		<p>git是一个分布式版本控制系统，起初由linus开发的用来对linux核心代码的管理工具。</p>
+		<h4>git push 本地分支推送至远程分支</h4>
+		<p><i>git push test test1:remotetest</i></p>
+		<p>push之后会删除远程的remotetest分支，push上去的test会代替，但是可以通过回滚恢复。</p>
+		<p><i>git push origin 本地分支名称:远程分支名称</i></p>
+		<p>若本地分支名称与远程分支名称相同，则为更新远程分支，如果不同，则会创建一个新的远程分支并且更新。</p>
+</body>
+</html>
