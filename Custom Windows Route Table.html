@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Windows下使用路由表选择网卡出口</title>
+ </head>
+ <body>
+  <h2>Windows下使用路由表选择网卡出口</h2><br>
+	<p>有两块网卡，一块有线，一块无线，本来是想让末一个程序走特定网卡出口的，但是找了半天似乎没有方法。</p>
+	<p> >_< 出口不行吧，那换目的地好了，Windows路由表可以帮上忙。</p>
+
+	<h4>Windows路由表结构</h4>
+		<p>ipv4</p>
+		<p><span>Network Destination    |    Netmask     |     Gateway    |    Interface  | Metric</span></p>
+		<p><span> 0.0.0.0				|    0.0.0.0	 |  172.16.217.3  | 172.16.217.72 |  10	  </span></p>
+        <p><span> 0.0.0.0			    |    0.0.0.0	 |  10.168.215.3  |10.168.215.249 |  25	  </span></p>
+		<p>Network Destination:网络目的地，可以是一个特定网址页第一是一个网段，根据后面的mask掩码来判断。
+		<p>Netmask:掩码 255.255.255.255 表示目的地为特定一个地址</p>
+		<p>Gatway:网关出口，这里的两个网卡是有不同出口的，需要走10.168.215.3网关才能到目的地址。可是Metric的数值决定了系统会优先走172.16.217.72这个路径。</p>
+		<p>Interface:网卡接口，一般使用arp -a可以看到网卡的序号。</p>
+		<p>Metric:数值越小越优先，具体有哪些值组成可以看这里:<a href="http://blog.chinaunix.net/uid-66396-id-2688898.html">http://blog.chinaunix.net/uid-66396-id-2688898.html</a></p>
+		
+	<h4>使用arp命令查看网卡序列号</h4></p>
+		<p><i>arp -a</i></p>
+
+		<p>结果: Interface: 10.168.215.249 --- 0x1e</p>
+
+	<h4>添加自定义路由表</h4><p/>
+
+		<p><i>route add 192.30.253.113 mask 255.255.255.255 10.168.215.3 if 0x1e (还能加metric参数的)</i></p>
+		<p>结果: route pring 显示自定义记录 151.101.76.162  |  255.255.255.255  |   10.168.215.3  |  10.168.215.249  |  26</p>
+		<p>tips: 这种方式添加的记录是临时的，会在重启系统之后消失。添加永久记录可以加上 -p 参数。<p>
+
+	<h4>检测</h4>
+		<p>使用tracert工具可以看到已经从 10.168.215.3 出去了。</p>
+		<p>1     2 ms     3 ms     4 ms  10.168.213.3 </p>
+
+	<h3>后记:</h3>
+		<p>有些网站会有多个ip地址，route 命令如何使用掩码来添加网段呢?</p>
+</html>
