@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>soql查询的特殊使用</title>
+ </head>
+ <body>
+	where中使用select子查询: select Id,Name from Group where id in (select GroupId from GroupMember), 适用于主键被包含在relationship中情况。
+	例如: select Email from user 
+				where id in(select userorgroupid from groupmember 
+													where group.name = '${QueueName}')
+		  user主键包含在GroupMember关系中，此语句查询特定group中的所有的user的email字段。
+ </body>
+</html>

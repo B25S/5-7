@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>force.com 之GroupMember对象与Gourp对象关系</title>
+ </head>
+ <body>
+  dataloader中查看到GroupMember对象结构为:
+	 Id | GroupId | UserOrGroupId | SystemModstamp
+	 Group对象结构:
+	 Id, Name, DeveloperName, RelatedId, Type, Email, OwnerId, DoesSendEmailToMembers, DoesIncludeBosses, CreatedDate, CreatedById, LastModifiedDate, LastModifiedById, SystemModstamp
+
+	 GroupMember中包含了Group和User的对应的Id值,可以使用这样的语句
+ </body>
+</html>
