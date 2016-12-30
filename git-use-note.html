@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>git使用笔记</title>
+ </head>
+ <body>
+	<nav><ul><a href='index.html'><h3><span><b>目录</b></span></h3></a><ul></nav>
+	<section>
+		<h2>git使用笔记</h2>
+	</section>
+		<br>
+	<section>
+		<p>git是一个分布式版本控制系统，起初由linus开发的用来对linux核心代码的管理工具。</p>
+		<br>
+		<p><i>git push test test1:remotetest</i></p>
+		<p>push之后会删除远程的remotetest分支，push上去的test会代替，但是可以通过回滚恢复。</p>
+		<br>
+		<p><i>git push origin 本地分支名称:远程分支名称</i></p>
+		<p>若本地分支名称与远程分支名称相同，则为更新远程分支，如果不同，则会创建一个新的远程分支并且更新。</p>
+		<br>
+		<p><span><i>git pull 远程库名称 远程分支名称</i></span></p>
+		<p>将远程仓库的分支抓取下来，获取最新的版本,会指向最新的head</p>
+		<br>
+		<p><span><i>git log</i></span></p>
+		<p>这个命令可以查看日志，其中会记录最近commit的hash值，配合reset命令可以回滚到指定的commit版本</p>
+		<br>
+		<p><span><i>git reset --hard HEAD^</i></span></p>
+		<p>HEAD代表当前commit版本的指针，改变版本号其实就是移动这个指针。</p>
+		<p>HEAD^ 代表上一个，也可以写成HEAD~x，如回退第前十个版本为: HEAD~10;当然用git log中显示的hash值也是可以的:git reset --hard hash。</p>
+	</section>
+		<br>
+	<section></section>
+</body>
+</html>
