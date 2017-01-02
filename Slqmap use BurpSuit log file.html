@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Menu</title>
+ </head>
+ <body>
+	<header><nav><ul><a href='index.html'><h3><span><b>目录</b></span></h3></a><ul></nav></header>
+	<main role="main">
+		<header><h1>content title</h1></header>
+		<ul>
+			<ol>
+				<a href="git-use-note.html">git-use-note</a><em>NOW</em>NOW<i>NOW</i><strong>NOW</strong><b>NOW</b><u>NOW</u><s>NOW</s>
+				<small>NOW</small><abbr title="nownownow">NOW</abbr><q>NOW</q>
+			</ol>
+			<ol>
+				<a href="git_config.html">git_config</a>
+				<code>git config --global user.name "Your Name"</code>
+			</ol>
+		</ul>
+		<section>section</section>
+		<article>
+			<p>好奇怎么获得大批的带get方式参数的url请求，上网查了一下，发现有人用burpsuit的日志配合sqlmap来批量的收集注入点。</p>
+			<br>
+			<p>在版本为1.7的BurpSuit中设置log记录，User Option-->Logging-->Requests勾选之后输入log文件名了保留位置，之后BurpSuit的log中便会保存Request记录。</p>
+			<br>
+			<p>那么如何在sqlmap中使用呢？很简单，使用参数<i> -l BurpSuit的log文件名 --batch -smart</i></p>
+			<p><i>sqlmap.py -l BurpSuit的log文件名 --batch -smart</i></p>
+			<p>前面两个参数好理解，smart是自动的识别url路径。</p>
+			<br>
+			<p>这种方法Burpsuit的log文件来批量处理，但是很被动，而且也不是自动的，因为log也是手动操作产生的，可能Burpsuit有自动扫描网络网站的功能，但是暂时还没去了解 (>..<)。</p>
+			<p>觉得python中应该有专门的工具来抓，例如爬虫之类的，有时间再找。</p>
+		</article>
+	</main>
+	<aside>aside<aside>
+	<footer>
+	footer
+	<section>
+		<address>
+			Written by <a href="#">B25S</a><br>
+		</address>
+	</section>
+	</footer>
+ </body>
+</html>
