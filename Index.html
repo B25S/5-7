@@ -7,12 +7,21 @@
   <meta name="Keywords" content="">
   <meta name="Description" content="">
   <title>Menu</title>
+  <style>
+	.right_sidebar{width:20%; float:right;}
+	.border_left_dashed{
+		border:1px;
+		border-style:none none none dashed;
+	}
+	.border_bottom_dashed{
+		border:1px;
+		border-style:none none dashed none;
+	}
+  </style>
  </head>
  <body>
-	<header><nav><ul><a href='index.html'><h3><span><b>目录</b></span></h3></a><ul></nav></header>
-	<main role="main">
-		<header><h1>content title</h1></header>
-		<ul>
+	<header class="border_bottom_dashed"><nav><ul><a href='index.html'><h3><span><b>目录</b></span></h3></a><ul></nav></header>
+	<aside class="right_sidebar border_left_dashed"><ul>
 			<ol>
 				<a href="git-use-note.html">git-use-note</a><em>NOW</em>NOW<i>NOW</i><strong>NOW</strong><b>NOW</b><u>NOW</u><s>NOW</s>
 				<small>NOW</small><abbr title="nownownow">NOW</abbr><q>NOW</q>
@@ -22,10 +31,14 @@
 				<code>git config --global user.name "Your Name"</code>
 			</ol>
 		</ul>
+	</aside>
+	<main role="main" class="">
+		<header><h1>content title</h1></header>
+		
 		<section>section</section>
 		<article>article</article>
 	</main>
-	<aside>aside<aside>
+	
 	<footer>
 	footer
 	<section>
