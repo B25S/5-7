@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Windows命令行开启wifi</title>
+ </head>
+ <body>
+	<p>杂牌网卡使用猎豹开wifi怎么都连不上，蛋疼 (> _< !!) </p>
+	<p>记一下手动开启wifi的过程</p>
+
+	<p>使用netsh命令</p>
+	<br>
+	<p><i>netsh wlan</i></p>
+	<p><i>hostednetwork mode=allow ssid=tmpwifi key=wifi0x0000 keyUsage=temporary</i></p>
+	<p><i>hostednetwork start</i></p>
+	<br>
+	<p>写成批处理:</p>
+	<p><code><i>
+		@echo off<br>
+		netsh wlan<br>
+		hostednetwork mode=allow ssid=tmpwifi key=wifi0x0000 keyUsage=temporary<br>
+		hostednetwork start<br>
+	</i></code></p>
+	<p>之后调整共享的网络适配器就行了</p>
+	<p>不过很好奇有没有设置网络分享的时候有没有相应的命令啊？</p>
+	<p>这种方式开启的wifi有时候会连接不上，试多几次可以了，就算是这样的方式应该也有优化的地方的。</p>
+ </body>
+</html>
