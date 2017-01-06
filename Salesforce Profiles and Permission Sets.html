@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>SalesForce的权限系统</title>
+ </head>
+ <body>
+	<p>Profiles & Permission Sets</p>
+	<p>Profiles指定Permission Sets，而Permission Sets中指定具体的权限。</p>
+	<p>用户会被分配不同的profiles，拥有分配到profile的指定的Permission sets。</p>
+	<p>类比操作系统中的权限系统，Profiles相当于Group，而Permission Sets相当于Group中具体的权限。</p>
+
+	<p>roles</p>
+	<p>roles主要用来控制user的record-level。</p>
+	<p>roles通过role hierarchy and sharing rules；定义一个用户的时候不一定要分配roles。</p>
+	<p>roles似乎可以提高效率。但是提高的是什么的效率呢？</p>
+	<p>官网引用:</p>
+	<blockquote cite="https://developer.salesforce.com/docs/atlas.en-us.fundamentals.meta/fundamentals/adg_securing_data_roles_profiles.htm">To help you remember which controls what, remember: Roles control Records.</blockquote>
+	<br>
+	<p>一种清晰的结构就是，不同层级的人物只关注相对应的record，例如人力资源部就只查看人力资源部门下的记录，而ceo，vp 等的范围则会大很多。</p>
+	<p>官网引用:</p>
+	<blockquote cite="https://developer.salesforce.com/docs/atlas.en-us.fundamentals.meta/fundamentals/adg_securing_data_roles_profiles.htm">once we implement our role hierarchy, we'll automatically grant several kinds of record-level permissions to various users. </blockquote>
+	<p>这说明role hierarchy的结构是相对固定的，新定义的user只要加入到role hierarchy层级中，就自动拥有了相对应的权限。</p>
+	<br>
+	<p>官网引用:</p>
+	<blockquote cite="https://developer.salesforce.com/docs/atlas.en-us.fundamentals.meta/fundamentals/adg_securing_data_roles_profiles.htm">Ben Stuart, the software development manager, also won't be able to see any reviews that were written by members of the QA or Product Management groups, even if QA engineers or product managers interviewed candidates for a software engineering position in his group.</blockquote>
+	<p>不同的role hierarchy层级之间即便有联系的record，但是只有所属的那个role中user能看到</p>
+	<p>这种情况的解决似乎是使用这样一种方式:"record-level sharing methods"</p>
+ </body>
+</html>
