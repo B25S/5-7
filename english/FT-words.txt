@@ -1,4 +1,3 @@
-
 +------------------------------------+
 * tapped	敲击 磕 窃听 指派(FT)	
 * hawk	鹰派(FT)
@@ -36,3 +35,6 @@
 * pragmatism	实用主义
 * instinct 		本能 直觉
 * oversee 		监管
+* foreign exchange reserves 	外汇储备
+* Reuter		路透社
+* predict		预知
