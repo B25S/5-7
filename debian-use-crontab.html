@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Debian Linux schedule jobs计划任务</title>
+ </head>
+ <body>
+	<p>使用crontab</p>
+	<p>有两个文件规定了user的使用权限(默认每个用户拥有自己的crontab文件)</p>
+	<p><i>/etc/cron.allow: If this file exists, only users listed in it can use crontab.</i></p>
+	<p><i>/etc/cron.deny: If this file exists, users listed in it cannot use crontab.</i></p>
+	<br>
+	<p>全部user的crontab文件存放在/var/spool/cron/crontabs/中，一般的user无法编辑这里的文件，需要使用crontab命令来操作。</p>
+	<br>
+	<p>分类目录存放特定时间的脚本:</p>
+		<blockquote>
+			/etc/cron.d<br>
+			/etc/cron.daily<br>
+			/etc/cron.hourly<br>
+			/etc/cron.monthly<br>
+			/etc/cron.weekly<br>
+		</blockquote>
+	<p>具体执行时间各个系统有所不同，也可以在/etc/crontab中调整。</p>
+	<br>
+	<p>crontab文件格式</p>
+				<br>
+				* * * * * Command to be executed<br>
+				- - - - -<br>
+				| | | | |<br>
+				| | | | +----- Day of week (0-6)<br>
+				| | | +------- Month (1 - 12)<br>
+				| | +--------- Day of month (1 - 31)<br>
+				| +----------- Hour (0 - 23)<br>
+				+------------- Min (0 - 59)<br>
+				<br>
+	<p>正常情况下可以使用crontab -e 来编辑，但是当在raspberry pi中输入这个命令之后，竟然编辑的是一个在tmp下面的临时文件，而且树莓派中也没有对应的cron服务，不知为何。</p>
+	<p>直接使用sudo来编辑/etc/crontab文件，正常保存退出，等待结果...</p>
+ </body>
+</html>
