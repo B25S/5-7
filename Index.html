@@ -8,7 +8,7 @@
   <meta name="Description" content="">
   <title>Menu</title>
   <style>
-	.right_sidebar{width:20%; float:right;}
+	.right_sidebar{width:20%; height:800px; float:right;}
 	.border_left_dashed{
 		border:1px;
 		border-style:none none none dashed;
@@ -20,31 +20,73 @@
   </style>
  </head>
  <body>
-	<header class="border_bottom_dashed"><nav><ul><a href='index.html'><h3><span><b>目录</b></span></h3></a><ul></nav></header>
-	<aside class="right_sidebar border_left_dashed"><ul>
-			<ol>
-				<a href="git-use-note.html">git-use-note</a><em>NOW</em>NOW<i>NOW</i><strong>NOW</strong><b>NOW</b><u>NOW</u><s>NOW</s>
-				<small>NOW</small><abbr title="nownownow">NOW</abbr><q>NOW</q>
-			</ol>
-			<ol>
-				<a href="git_config.html">git_config</a>
-				<code>git config --global user.name "Your Name"</code>
-			</ol>
-		</ul>
+	<header><a href='index.html'><h3><span><b>Stay Hungry and Stay Foolish</b></span></h3></a></header>
+	<nav class="border_bottom_dashed"><ul>----------导航栏--------<ul></nav>
+	<aside class="right_sidebar border_left_dashed">
+		<section><h1>目录</h1></section>
+		<section>
+			<ul>
+				<li>
+					<a href="git-use-note.html">git-use-note</a>
+				</li>
+				<li>
+					<a href="git_config.html">git_config</a>
+				</li>
+				<li>
+					<a href="git-use-note.html">git-use-note</a>
+				</li>
+				<li>
+					<a href="git_config.html">git_config</a>
+				</li>
+				<li>
+					<a href="git-use-note.html">git-use-note</a>
+				</li>
+				<li>
+					<a href="git_config.html">git_config</a>
+				</li>
+			</ul>
+		</section>
 	</aside>
-	<main role="main" class="">
+	<main role="main">
 		<header><h1>content title</h1></header>
 		<section>section</section>
 		<article>article-content</article>
+		<article>
+			<p>  授舍友所托，帮忙安装Windows系统。因为有段时间没有了解过装机系统了，自己的Windows10也是直接冲Windows8升级过来的，使用传统安装方式。</p>
+			<ol>
+			<li><p>刻录ISO文件进入U盘。</p>
+			</li>
+			<li><p>从U盘启动，根据提示进行，结果删除原系统分区后，无法进行新的分区，提示不能识别，FEI方式启动只能识别GPT分区格式。</p>
+			</li>
+			<li><p>百度GOOGLE之，才发现Windows10是默认UFI方式启动，其实Windows7、8下似乎也有此类问题，但是有些电脑可以通过BIOS来选择传统和UFI启动方式的。但是舍友的ACER电脑找遍了，也没有选择传统启动，看来有可能是厂商锁定了，但是为什么提示电脑里的分区表是MBR格式？</p>
+			</li>
+			<li><p>再百度GOOGLE之，找到这种情况的解决方法，删除ISO文件目录下的EFI文件夹和bootmgr.efi文件之后再从U盘启动，系统找不到EFI方式启动的文件，就会自动的使用传统方式启动了。</p>
+			</li>
+			<li><p>正常安装。</p>
+			</li>
+			</ol>
+			<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><ol>
+			<li><p>原本4G左右的ISO镜像似乎使用4G左右的U盘来进行(假设出容量外，其余条件一致)来进行写入会比较快。</p>
+			</li>
+			<li><p>FEI和GPT是什么关系？</p>
+			</li>
+			<li><p>了解ISO镜像下EFI目录和bootmrg.efi文件作用？</p>
+			</li>
+			</ol>
+		</article>
 	</main>
 	
 	<footer>
-	footer
-	<section>
-		<address>
-			Written by <a href="#">B25S</a><br>
-		</address>
-	</section>
+		<section>
+			<address>
+				Written by: <a href="#">B25S</a><br>
+			</address>
+		</section>
+		<section>
+			<address>
+				license: <a href="#">Lincese</a><br>
+			</address>
+		</section>
 	</footer>
  </body>
 </html>
