@@ -1,0 +1,44 @@
+Title:Sqlmap批量抓取注入点URL
+Keywords:Sqlmap
+Catagory:Sqlmap
+Description:
+Author:B25S
+license:
+
+-----
+<article>
+	<p>Sqlmap有类似爬虫的功能,使用这样一条命令来自动化的抓取网络上的注入点URL。</p>
+	<p><i>sqlmap.py -g "google dorks，如:site:jp inurl:php?*id=*" --file-dest=.\保存文件.txt --proxy="https://ip地址:端口" --proxy-cred="用户名:密码"</i></p>
+	<ol>
+		<li>
+			<p> -g 选项使用google dork，暂时没有发现支持其他的搜索引擎。</p>
+		</li>
+		<li>
+			<p> --file-dest 此保存的文件必须事先存在。</p>
+		</li>
+		<li>
+			<p> --proxy 使用代理地址,http和https可以，其他协议未尝试。</p>
+		</li>
+		<li>
+			<p> --proxy-cred 代理验证。</p>
+		</li>
+		<li>
+			<p> --batch 处理批量任务时候，当要求用户输入选项是通通使用默认。</p>
+		</li>
+	</ol>
+	<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2>
+	<ol>
+		<li>
+			<p>socket代理如何使用？git协议使用一样吗？</p>
+		</li>
+		<li>
+			<p>如何生成新保存文件？</p>
+		</li>
+		<li>
+			<p> --batch 能否指定多种默认选项？</p>
+		</li>
+		<li>
+			<p>有支持其余搜索引擎的方法吗？</p>
+		</li>
+	</ol>
+</article>

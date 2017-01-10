@@ -1,0 +1,29 @@
+Title:Windump记录
+Keywords:
+Catagory:
+Description:
+Author:B25S
+license:
+
+-----
+<article>
+	<p>Windump是Tcpdump在Windows上的实现，用法规则如出一辙，引文linux上tcpdump用得少，在windows下补回，参考入门文章:<a href="http://www.binarytides.com/tcpdump-tutorial-sniffing-analysing-packets/">Tcpdump tutorial – Sniffing and analysing packets from the commandline</a></p>
+	<ol>
+	<li><p>指定地址，端口，协议等参数时，使用一对单引号括起(也可以不用)。</p>
+		<p><i>WinDump.exe -i 1 -vn -c 5 -e tcp and src 192.168.1.1 and port 8080</i></p>
+		<p>取得第一个网络接口的包含tcp协议源地址为192.168.1.1且端口为8080的5个数据包。</p>
+	</li>
+	<li><p> -A 参数将包中的content部分已ASCII来显示，这样可以使用findstr以及grep来进行搜索。</p>
+		<p>windows中:<i>WinDump.exe -i 1 -vn -e -A tcp | findstr /C:"POST" (或者/R)</i></p>
+		<p>linux中:<i>WinDump.exe -i 1 -vn -e -A tcp | grep -e "POST"</i></p>
+	</li>
+	</ol>
+	<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><ol>
+	<li><p>1</p>
+	</li>
+	<li><p>2</p>
+	</li>
+	<li><p>3</p>
+	</li>
+	</ol>
+</article>
