@@ -1,4 +1,5 @@
 +------------------------------------+
+* Financial Times	金融时报
 * tapped	敲击 磕 窃听 指派(FT)	
 * hawk	鹰派(FT)
 * assuming office	上任
@@ -38,3 +39,18 @@
 * foreign exchange reserves 	外汇储备
 * Reuter		路透社
 * predict		预知
+* appreciate	升值
+* astonishing	令人惊讶的
+* allegations	指控
+* intelligence 	情报机构
+* bear in mind	记住
+* political witch-hunt	政治迫害
+* corroborate	证实
+* observes		观察到
+* charges 		指控
+* alleged 		声称
+* potentially	可能
+* head-scratching	令人头痛的
+* pro-Russian	亲俄
+* speculation	思索，猜测
+* resent		不满愤怒
