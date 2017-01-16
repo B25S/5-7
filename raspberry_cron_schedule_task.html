@@ -1,0 +1,50 @@
+Title:cron定时任务
+Keywords:
+Catagory:
+Description:
+Author:B25S
+license:
+
+-----
+<article>
+	<p>cron定时任务</p>
+	<ol>
+	<li><p>安装cron。</p>
+	</li>
+	<li><p>使用命令 <i>crontab -u root -e</i> 设置已root的身份来执行任务。</p>
+	</li>
+	<li><p>在/var/spool/cron/crontabs/中会有已用户名为文件名的任务配置文件，一般一个用户只有一个文件。</p>
+	</li>
+	<li><p>设置/var/spool/cron/crontabs/下文件的执行权限。</p>
+	</li>
+	<li><p>关于任务记录的格式。</p>
+		<blockquote cite="">
+		<p>
+		Each line has five time-and-date fields, followed by a command, followed by a newline character ('\n'). The fields are separated by spaces. The five time-and-date fields cannot contain spaces. The five time-and-date fields are as follows: minute (0-59), hour (0-23, 0 = midnight), day (1-31), month (1-12), weekday (0-6, 0 = Sunday).</p>
+<br>
+
+<p>01 04 1 1 1 /usr/bin/somedirectory/somecommand</p>
+<br>
+<p>The above example will run /usr/bin/somedirectory/somecommand at 4:01am on January 1st plus every Monday in January.</p>
+<br>
+<p>
+An asterisk (*) can be used so that every instance (every hour, every weekday, every month, etc.) of a time period is used.
+</p>
+<br>
+
+<p>01 04 * * * /usr/bin/somedirectory/somecommand</p>
+<br>
+<p>The above example will run /usr/bin/somedirectory/somecommand at 4:01am on every day of every month.</p>
+<br>
+<p>Comma-separated values can be used to run more than one instance of a particular command within a time period. Dash-separated values can be used to run a command continuously.</p></blockquote>
+	</li>
+	</ol>
+	<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><ol>
+	<li><p>1</p>
+	</li>
+	<li><p>2</p>
+	</li>
+	<li><p>3</p>
+	</li>
+	</ol>
+</article>

@@ -38,3 +38,4 @@
 * foreign exchange reserves 	外汇储备
 * Reuter		路透社
 * predict		预知
+* briefed	概要

@@ -1,0 +1,39 @@
+Title:折腾IOS
+Keywords:
+Catagory:
+Description:
+Author:B25S
+license:
+
+-----
+<article>
+	<p>
+	越狱之后的IOS中存在一个图形化的软件包管理工具Cydia,其中可以添加源，类似apt或yum的源。
+	</p>
+	<ol>
+	<li><p>有两种方法可以ssh连接至ios，在Cydia中安装Openssh(USB方式需要使用usbmuxd这个辅助工具),默认root密码为alpine(手机中还存在一个mobile的用户，貌似没有密码)，越狱之后最好还是passwd改一下密码。使用ssh连接上去之后一看/etc/下有apt，原来使用的debian的包管理，找到source.list，修改掉里面的错误的源地址，这样Cydia就能正确update了。</p>
+	</li>
+	<li><p>
+	<blockquote cite="http://bbs.app111.com/thread-391694-1-1.html">
+		有些源是以安装包的形式添加，用户无需手动输入源地址。此类源在编辑状态下没有红色减号的删除标志，必须在软件包管理页面内卸载才能删除。
+	</blockquote>
+	</p>
+	</li>
+	<li><p>删除/private/var/lib/cydia/metadata.plist0这个文件(ios7为metadata.cb0)。</p>
+	</li>
+	<li><p>删除/etc/apt/sources.list.d/cydia.list文件中的错误源地址。</p>
+	</li>
+	<li><p>删除/var/mobile/Library/Caches/com.saurik.Cydia/lists/临时缓存的错误的_Release文件。</p>
+	</li>
+	<li><p>暂时解除问题，但是在cydia退出后台几次之后在进入更新时，又会报错...  >_<..</p>
+	</li>
+	</ol>
+	<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><ol>
+	<li><p>在命令行下面可以直接使用apt-get命令进行包管理，和linux下使用没什么区别。</p>
+	</li>
+	<li><p>一个冒险做法，使用apt-get删除掉cydia，这个时候apt命令也会变成不可用，从cydia的源网站中找到所有的apt7与cydia包，或则事先用 <i>apt-get -d xxx</i> 下载包，查找依赖可以使用这两个命令: <i>apt-cache depends/rdepends</i>，然后使用dpkg命令安装回来，再重启。这样风险很大，万一少哪个包容易白苹果。</p>
+	</li>
+	<li><p>3</p>
+	</li>
+	</ol>
+</article>
