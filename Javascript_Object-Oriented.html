@@ -1,0 +1,47 @@
+Title:
+Keywords:
+Catagory:javascript面向对象
+Description:
+Author:B25S
+license:
+
+-----
+<article>
+	<p>javascript面向对象，参考:<a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html">http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html</a></p>
+	<ol>
+		<li>
+			<p>javascript中没有类，也没有对象，javascript中使用 <i><b>var o={A:'a',B:'b'}</b></i> (json)来代表一个集合，类似对象模板-->类。</p>
+		</li>
+		<li>
+			<p>也可以使用方法来达成,<i>function o(arg1,arg2){return {arg1:'one',arg2:'two'}}</i>
+			<p>
+				但是不能实现复用这样的面向对象特征。
+			</p>
+			</p>
+		</li>
+		<li>
+			<p>javascript中提供了this和new关键字，可以在方法中使用(>_<...只能说真很奇葩...,对习惯java的部分人来说简直就是不伦不类...)。
+			<br>
+			this用于方法中，new用于对象申明:<i>var o = new object();</i>
+			<br>也就是说申明一个方法就是申明一个对象... o_O!!
+			</p>
+		</li>
+		<li>
+			<p>this和new的使用依然没有办法实现复用，即使拥有相同的属性，却不能像java一类那样抽象出来一个父类或者接口。(这里只是类比，应该是不准确)但是javascript中提供了prototype，它用于定义相同的共用的属性的值，指定值之后，所有new出来的变量'var'都是指向这个值的。</p>
+		</li>
+		<li>
+			<p>javascript提供了isPrototypeOf()，hasOwnProperty()方法和in晕算法，可以验证对象与实例之间的关系。</p>
+		</li>
+		</ol>
+		<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><ol>
+		<li>
+			<p>和java相比，能复写方法吗？</p>
+		</li>
+		<li>
+			<p>有继承概念吗？</p>
+		</li>
+		<li>
+			<p>3</p>
+		</li>
+	</ol>
+</article>

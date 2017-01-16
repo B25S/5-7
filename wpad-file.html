@@ -1,0 +1,31 @@
+Title:LAN中获取wpad.dat文件
+Keywords:
+Catagory:
+Description:
+Author:B25S
+license:
+
+-----
+<article>
+	<p><abbr title="Web Proxy Autodiscovery Protocol">wpad</abbr>全称为Web Proxy Autodiscovery Protocol，用户LAN中自动设置web代理。</p>
+	<ol>
+	<li><p>确定代理服务的存在，可以直接使用<i><em> ping wpad </em></i></p>
+	</li>
+	<li><p>ping过之后得到了代理服务器的ip地址，打开浏览器输入 <em>http://ip/wpad.dat</em>,即可下载到wpad.dat文件。</p>
+	</li>
+	<li><p>在浏览器中设置自动的检测web代理的时候，其实使用的就是这份文件，浏览器利用这个协议自动的获得代理服务器的ip等各种信息。</p>
+	</li>
+	<li><p>可以使用netstat命令来确定代理服务器地址。</p>
+	</li>
+	<li><p> ifconfig/all可以查看到primary dns suffix，使用<i><em>ping wpad.primary dns suffix</em></i>可以检测代理服务器地址。</p>
+	</li>
+	</ol>
+	<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><ol>
+	<li><p>如果服务器启动了dhcp，<i><em>ping wpad.primary dns suffix</em></i>可能不适用。</p>
+	</li>
+	<li><p>wpad.dat实际上应该是一份js文件。</p>
+	</li>
+	<li><p>firefox设置自动检测web代理时，存在不定时的验证要求，版本50.1.0。</p>
+	</li>
+	</ol>
+</article>
