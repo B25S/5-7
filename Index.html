@@ -1,77 +1,130 @@
 <!doctype html>
 <html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="Generator" content="EditPlus®">
-  <meta name="Author" content="">
-  <meta name="Keywords" content="">
-  <meta name="Description" content="">
-  <title>Menu</title>
-  <style>
-	.right_sidebar{width:20%; height:800px; float:right;}
-	.border_left_dashed{
-		border:1px;
-		border-style:none none none dashed;
-	}
-	.border_bottom_dashed{
-		border:1px;
-		border-style:none none dashed none;
-	}
-	a{
-		text-decoration:none;
-	}
-  </style>
- </head>
- <body>
-	<header><a href='index.html'><h3><span><b>Stay Hungry and Stay Foolish</b></span></h3></a></header>
-	<nav class="border_bottom_dashed">
-		<a href="ajax.js">0x0001</a> |
-		<a href="/css/">0x0002</a> |
-		<a href="/js/">0x0003</a> |
-		<a href="/jquery/">0x0004</a>
-	</nav>
-	<aside class="right_sidebar border_left_dashed">
-		<section><h1>目录</h1></section>
-		<section>
-			<ul>
-				<li>
-					<a href="git-use-note.html">git-use-note</a>
-				</li>
-				<li>
-					<a href="git_config.html">git_config</a>
-				</li>
-				<li>
-					<a href="git-use-note.html">git-use-note</a>
-				</li>
-				<li>
-					<a href="git_config.html">git_config</a>
-				</li>
-				<li>
-					<a href="git-use-note.html">git-use-note</a>
-				</li>
-				<li>
-					<a href="git_config.html">git_config</a>
-				</li>
-			</ul>
-		</section>
-	</aside>
-	<main role="main">
-		<header><h1>content title</h1></header>
-		<section>section</section>
-		<article>article-content</article>
-	</main>
-	
-	<footer>
-		<section>
-			<address>
-				Written by: <a href="#">B25S</a><br>
-			</address>
-		</section>
-		<section>
-			<address>
-				license: <a href="#">Lincese</a><br>
-			</address>
-		</section>
-	</footer>
- </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>Menu</title>
+    <style>
+        .main{width: 70%; height: auto;}
+        .right_sidebar{width:20%; height:800px; float:right;}
+        .border_left_dashed{
+            border:1px;
+            border-style:none none none dashed;
+        }
+        .border_bottom_dashed{
+            border:1px;
+            border-style:none none dashed none;
+        }
+        a{
+            text-decoration:none;
+        }
+        .padding_header{
+            padding: 0px 0px 0px 35px;
+        }
+        .padding{
+            padding: 5px 35px 10px 35px;
+        }
+    </style>
+</head>
+<body>
+<header style=""><a href='index.html'><h3><span><b>Stay Hungry and Stay Foolish</b></span></h3></a></header>
+<nav id="Navigator" class="border_bottom_dashed padding"></nav>
+<aside class="right_sidebar border_left_dashed padding">
+    <section><h1>目录</h1></section>
+    <section>
+        <ul id="Content"></ul>
+    </section>
+</aside>
+<main role="main" id="Main" class="main padding">
+    <header><h1>content title</h1></header>
+    <section>section</section>
+    <article id="art" class="padding">article-content</article>
+</main>
+
+<footer class="padding">
+    <section>
+        <address>
+            Written by: <a href="#">B25S</a><br>
+        </address>
+    </section>
+    <section>
+        <address>
+            license: <a href="#">Lincese</a><br>
+        </address>
+    </section>
+</footer>
+
+<script type="text/javascript">
+
+    function getContent(path) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange=function(){
+            if(xmlhttp.readyState==4 && xmlhttp.status==200){
+                var con = eval(xmlhttp.response);
+                var ul = document.getElementById("Content");
+                while(ul.hasChildNodes()){
+                    ul.removeChild(ul.lastChild);
+                }
+                for (var j = 0; j < con.length; j++){
+                    var li = document.createElement("li");
+                    var link = document.createElement("a");
+                    var con_text = document.createTextNode("\n");
+                    if(j != 0) {
+                        ul.appendChild(con_text);
+                    }
+                    link.text = con[j][eval(j+1)];
+                    link.setAttribute("onclick","getContext('"+path+'/'+link.text+"')");
+                    li.appendChild(link);
+                    ul.appendChild(li);
+                }
+                j = 0;
+            }
+        }
+        xmlhttp.open("get","json/"+path+"_content.json",true);
+        xmlhttp.send();
+    }
+
+    function getContext(path) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange=function(){
+            if(xmlhttp.readyState==4 && xmlhttp.status==200){
+                var art = document.getElementById("art");
+                art.innerHTML = xmlhttp.response;
+                //document.getElementById("Main").appendChild(art);
+            }
+        }
+        xmlhttp.open("get",path,true);
+        xmlhttp.send();
+    }
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+        if(xmlhttp.readyState==4 && xmlhttp.status==200){
+            var nav_con = eval(xmlhttp.response);
+            var navigator = document.getElementById("Navigator");
+            for (var i = 0; i < nav_con.length; i++){
+                var tag = document.createElement("a");
+                var text = document.createTextNode(" | ");
+                if(i != 0) {
+                    navigator.appendChild(text);
+                }else {
+                    getContent(nav_con[i][eval(i+1)]);
+                }
+                tag.text = nav_con[i][eval(i+1)];
+                <!-- link.setAttribute("href",""); -->
+                tag.setAttribute("onclick","getContent('"+tag.text+"')");
+                navigator.appendChild(tag);
+            }
+            i = 0;
+        }
+    }
+    xmlhttp.open("get","json/nav_con.json",true);
+    xmlhttp.send();
+
+</script>
+
+</body>
 </html>
