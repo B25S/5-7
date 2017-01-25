@@ -1,0 +1,4 @@
+britishcouncil
+
+pronoun			代词
+possessive		所有格(所占有的)
