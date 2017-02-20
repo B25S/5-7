@@ -1,0 +1,76 @@
+Title:EC2 Setup ShadowSocks Server
+Keywords:
+Catagory:
+Description:
+Author:B25S
+license:
+
+-----
+<article>
+    <p>其实在网上已经有一堆的教程了，这里记录一下注意的事项</p>
+    <ol>
+        <li>
+            <p>如果使用国内的credit或者debit卡绑定的时候，换用国内的网络，因为如果使用美国或者日本的网络登陆，amazon识别到ip后似乎会默认的查找相对应地区的credit或者debit卡数据中心，国内卡在不一定全球都能查到数据，这样国内的卡自然会被amazon认为是invilide了，导致绑定失败。</p>
+        </li>
+        <li>
+            <p>注意单个instance和多个instance的区别，他们是分别计算时间的，750小时只够一个instance不停止全天候开启。</p>
+        </li>
+        <li>
+            <p>amazon的固定ip也是收费的，但是不固定的是在重启instance之后会改变，正常情况下不会变。</p>
+        </li>
+        <li>
+            <p>amazon流量也是超过限额后会扣费，其他很多杂七杂八的也可能会增加费用，在使用前务必要了解清楚。</p>
+        </li>
+        <li>
+            <p>使用python版本的ShadowSocks最为方便，也比较稳定，直接使用pip安装，建立Shadowsocks.json配置文件:</p>
+            <pre>
+                <code>
+                    {
+                        "server":"0.0.0.0",
+                        "server_port":端口,
+                        "local_address":"127.0.0.1",
+                        "local_port":1080,
+                        "password":"连接密码",
+                        "timeout":300,
+                        "method":"aes-256-cfb",
+                        "fast_open":false
+                    }
+                </code>
+                使用命令启动
+                <code>
+                    ssserver -c /etc/ShadowSocks.json -d start
+                </code>
+                关闭
+                <code>
+                    ssserver -d stop
+                </code>
+                重启
+                <code>
+                    ssserver -c /etc/ShadowSocks.json -d restart
+                </code>
+            </pre>>
+        </li>
+        <li>
+            <p>需要开启ssh和shadowsocks服务端的端口，ssh会用到一个pem文件(私钥)，windows下可以使用puttygen来转换成putty可以使用的ppk文件，还必须要在Security Groups中开启22和对应shadowsocks服务端口。</p>
+        </li>
+        <li>
+            <p>连接不正常断开的时候比较吊诡，可以临时关闭防火墙试试。
+                <pre>
+                    <code>sudo ufw disable</code>
+                </pre>
+            </pre>
+        </li>
+    </ol>
+    <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2>
+    <ol>
+        <li>
+            <p>1</p>
+        </li>
+        <li>
+            <p>2</p>
+        </li>
+        <li>
+            <p>3</p>
+        </li>
+    </ol>
+</article>

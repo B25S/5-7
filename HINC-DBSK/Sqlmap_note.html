@@ -80,6 +80,14 @@ license:
 				</code>
 			</pre>
 		</li>
+		<li>
+			<p>使用指定的参数,-p选项指定一个参数，不使用的时候sqlmap会按照顺序来逐个尝试url中的参数。</p>
+			<pre>
+				<code>
+					python sqlmap.py -u "url" -p 参数
+				</code>
+			</pre>
+		</li>
 	</ol>
 	<br>
 	<p>
@@ -100,7 +108,8 @@ license:
 			</code>
 		</pre>
 	</p>
-		<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><ol>
+		<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2>
+	<ol>
 		<li>
 			<p>使用--file-read参数下载到的/etc/passwd文件只有一个'?'字符，换成了/etc/profile文件又是完整的，什么原因?</p>
 		</li>

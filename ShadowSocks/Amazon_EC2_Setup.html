@@ -1,0 +1,47 @@
+Title:Amazon EC2 Security Group Setup
+Keywords:
+Catagory:
+Description:
+Author:B25S
+license:
+
+-----
+<article>
+    <p>Amazon EC2 Security Group 设置</p>
+    <ol>
+        <li>
+            <p>若留空，则什么都不允许通过。</p>
+        </li>
+        <li>
+            <p>要允许所有的流量通过，可以设置All traffic 中的 source为anywhere。</p>
+        </li>
+        <li>
+            <p>若是搭建了Shadowsocks服务，Security Group没有设置好导致sock流量被阻拦，浏览器中看上去是和被墙的情况一样的，即是connection reset。</p>
+        </li>
+        <li>
+            <p>source 设置为anywhere会包括ipv6,可以删除。</p>
+        </li>
+        <li>
+            <p>设置Inbound规则为允许Shadowsocks对外端口开放，选择Custom TCP Rule，设置相应端口，source为anywhere。</p>
+            <p>如:  Custom TCP   TCP     8080    0.0.0.0/0(也可以设置为MY ip私用)</p>
+        </li>
+        <li>
+            <p>Outbound中如果设置了Shadowsocks特定端口，并不能使流量顺利通过，通过netstat查看的确连接的是云端的9999端口啊！？ 原因不明（目前仅是要设置成全部tcp流量通过才可）。</p>
+        </li>
+        <li>
+            <p>设置固定ip连接时，如果自身ip有变动，页面显示也是页面被重置的状态。</p>
+        </li>
+    </ol>
+    <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2>
+    <ol>
+        <li>
+            <p>什么是amazon云服务的vpc？ vpc和虚拟机实例是怎样一种关系？</p>
+        </li>
+        <li>
+            <p>2</p>
+        </li>
+        <li>
+            <p>3</p>
+        </li>
+    </ol>
+</article>

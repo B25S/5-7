@@ -1,0 +1,74 @@
+Title:XSS Full_width_charaters
+Keywords:
+Catagory:
+Description:
+Author:B25S
+license:
+
+-----
+<article>
+    <p>titile</p>
+    <ol>
+        <li>
+            <p>在XSS时候可以使用全角字符的来绕过，css中的expression可以做到。但是这种方法只有ie6到ie8beta2这种老旧浏览器上才支持。<br>
+                <br>
+                <pre>
+                    可以这样使用:
+                    <code>
+                        <div style="x:ｅｘｐｒｅｓｓｉｏｎ(alert(1))">IE6</div>
+                    </code>
+                </pre>
+                详细见这个链接:<a href="https://www.cnblogs.com/muguaworld/archive/2011/11/13/2247180.html"></a><br>
+            </p>
+        </li>
+        <li>
+            <p>
+                <pre>
+                    <code>
+                        <!doctype html>
+                        <html>
+                        <head>
+                            <style type="text/css">
+                                #toTopBtn{
+                                    position:fixed;
+                                    bottom:10px;
+                                    right:10px;
+                                    _position:absolute;
+                                    _top:expression(eval(document.documentElement.scrollTop + document.documentElement.clientHeight - 60));
+                                ...
+                                }
+                            </style>
+                        </head>
+                        <body>
+                        <div id="top">...</div>
+                        ...
+                        <a href="#top" id="toTopBtn">返回的顶部</a>
+                        </body>
+                        </html>
+                    </code>
+                </pre>
+            </p>
+        </li>
+        <li>
+            <p>3</p>
+        </li>
+        <li>
+            <p>4</p>
+        </li>
+        <li>
+            <p>5</p>
+        </li>
+    </ol>
+    <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2>
+    <ol>
+        <li>
+            <p>1</p>
+        </li>
+        <li>
+            <p>2</p>
+        </li>
+        <li>
+            <p>3</p>
+        </li>
+    </ol>
+</article>
