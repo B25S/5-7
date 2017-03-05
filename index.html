@@ -74,9 +74,13 @@
                     var con_text = document.createTextNode("\n");
                     if(j != 0) {
                         ul.appendChild(con_text);
+                    }else {
+                        getContext(path+'/'+con[j][eval(j+1)]);
                     }
-                    link.text = con[j][eval(j+1)];
-                    link.setAttribute("onclick","getContext('"+path+'/'+link.text+"')");
+                    link.text = con[j][eval(j+1)].substr(0,con[j][eval(j+1)].length-5);
+                    link.setAttribute("onclick","getContext('"+path+'/'+link.text+'.html'+"')");
+                    //link.setAttribute("onmousedown ",mouse_down_color_bound(this));
+                    //link.setAttribute("onmouseup ",mouse_up_color_fade(this));
                     li.appendChild(link);
                     ul.appendChild(li);
                 }
@@ -116,6 +120,8 @@
                 tag.text = nav_con[i][eval(i+1)];
                 <!-- link.setAttribute("href",""); -->
                 tag.setAttribute("onclick","getContent('"+tag.text+"')");
+                //tag.setAttribute("onmousedown ",mouse_down_color_bound(this));
+               //tag.setAttribute("onmouseup ",mouse_up_color_fade(this));
                 navigator.appendChild(tag);
             }
             i = 0;
@@ -124,6 +130,13 @@
     xmlhttp.open("get","json/nav_con.json",true);
     xmlhttp.send();
 
+    //javasript about css
+    function mouse_down_color_bound(el){
+        //el.style.color = "#4650A4";
+    }
+    function mouse_up_color_fade(el) {
+        //el.style.color = "#FFFFFF";
+    }
 </script>
 
 </body>

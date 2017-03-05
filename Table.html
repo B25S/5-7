@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 80%">
+    <table>
+        <tr>
+            <td>
+                Ticket No.
+            </td>
+            <td>
+                Ticket Summary
+            </td>
+            <td>
+                Incident Type/ Category
+            </td>
+            <td>
+                Resolution Details
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {!relatedTo.name}
+            </td>
+            <td>
+                {!relatedTo.Summary__c}
+            </td>
+            <td>
+                {!relatedTo.BMCServiceDesk__FKCategory__r.name}
+            </td>
+        </tr>
+        <tr>
+            <table class="table">
+                <tr>
+                    <td>
+                        Ticket No.
+                    </td>
+                    <td>
+                        Ticket Summary
+                    </td>
+                    <td>
+                        Incident Type/ Category
+                    </td>
+                    <td>
+                        Resolution Details
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {!relatedTo.name}
+                    </td>
+                    <td>
+                        {!relatedTo.Summary__c}
+                    </td>
+                    <td>
+                        {!relatedTo.BMCServiceDesk__FKCategory__r.name}
+                    </td>
+                </tr>
+            </table>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
